@@ -3,24 +3,96 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --bg-rgb: 255,255,255;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Dark theme overrides applied when html has the .dark class (toggled via ThemeToggle and inline script). */
+html.dark {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --bg-rgb: 10,10,10;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html { scroll-behavior: smooth; }
+
+::selection { background: #2563eb; color: #fff; }
+
+/* Force borders to be visible with maximum specificity */
+.border.border-black,
+.border-t.border-black,
+section.border-t.border-black,
+div.border.border-black {
+  border-color: #000000 !important;
+  border-width: 1px !important;
+  border-style: solid !important;
+}
+
+.border-t.border-black,
+section.border-t.border-black {
+  border-top-color: #000000 !important;
+  border-top-width: 1px !important;
+  border-top-style: solid !important;
+  border-left-width: 0px !important;
+  border-right-width: 0px !important;
+  border-bottom-width: 0px !important;
+}
+
+.border.border-black,
+div.border.border-black {
+  border-top-color: #000000 !important;
+  border-right-color: #000000 !important;
+  border-bottom-color: #000000 !important;
+  border-left-color: #000000 !important;
+  border-top-width: 1px !important;
+  border-right-width: 1px !important;
+  border-bottom-width: 1px !important;
+  border-left-width: 1px !important;
+  border-top-style: solid !important;
+  border-right-style: solid !important;
+  border-bottom-style: solid !important;
+  border-left-style: solid !important;
+}
+
+/* Dark mode borders with maximum specificity */
+html.dark .border.dark\:border-white\/10,
+html.dark .border-t.dark\:border-white\/10,
+html.dark section.border-t.dark\:border-white\/10 {
+  border-color: rgba(255, 255, 255, 0.1) !important;
+  border-top-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+html.dark .border.dark\:border-white\/15,
+html.dark div.border.dark\:border-white\/15 {
+  border-color: rgba(255, 255, 255, 0.15) !important;
+  border-top-color: rgba(255, 255, 255, 0.15) !important;
+  border-right-color: rgba(255, 255, 255, 0.15) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.15) !important;
+  border-left-color: rgba(255, 255, 255, 0.15) !important;
+}
+
+html.dark .border.dark\:border-white\/25,
+html.dark div.border.dark\:border-white\/25 {
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  border-top-color: rgba(255, 255, 255, 0.25) !important;
+  border-right-color: rgba(255, 255, 255, 0.25) !important;
+  border-bottom-color: rgba(255, 255, 255, 0.25) !important;
+  border-left-color: rgba(255, 255, 255, 0.25) !important;
+}
+
+/* Utility helper if you want a glass background using the CSS variable */
+.bg-surface-glass {
+  background-color: color-mix(in srgb, var(--background) 85%, transparent);
+  /* fallback for browsers without color-mix */
+  background-color: rgba(255,255,255,0.7);
+}
+html.dark .bg-surface-glass {
+  background-color: color-mix(in srgb, var(--background) 75%, transparent);
+  background-color: rgba(15,15,15,0.7);
 }
