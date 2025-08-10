@@ -14,21 +14,21 @@ const navItems = [
 export function Header() {
   const [open, setOpen] = useState(false);
   return (
-	<header className="sticky top-0 z-50 border-b border-neutral-800 bg-black text-neutral-200">
+	<header className="sticky top-0 z-50 border-b border-neutral-800 bg-black text-neutral-200 backdrop-blur-md transition-all duration-300">
       <div className="mx-auto max-w-6xl flex items-center justify-between px-4 py-3">
-  <Link href="#home" className="text-lg font-bold tracking-tight text-white">
+  <Link href="#home" className="text-lg font-bold tracking-tight text-white hover:text-blue-400 transition-all duration-300 hover:scale-105">
           Lewis Perez
         </Link>
     <nav className="hidden md:flex gap-6 text-sm" aria-label="Main navigation">
           {navItems.map(item => (
-      <Link key={item.href} href={item.href} className="hover:text-white transition-colors">
+      <Link key={item.href} href={item.href} className="hover:text-white transition-all duration-300 hover:scale-110 relative after:absolute after:bottom-0 after:left-0 after:h-0.5 after:w-0 after:bg-blue-400 after:transition-all after:duration-300 hover:after:w-full">
               {item.label}
             </Link>
           ))}
         </nav>
         <div className="hidden md:flex items-center gap-3">
           <ThemeToggle />
-          <Link href="#contact" className="inline-flex items-center rounded-full bg-blue-600 text-white px-5 py-2 text-sm font-medium shadow hover:bg-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400">Hire Me</Link>
+          <Link href="#contact" className="inline-flex items-center rounded-full bg-blue-600 text-white px-5 py-2 text-sm font-medium shadow hover:bg-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 transition-all duration-300 hover:scale-105 hover:shadow-lg">Hire Me</Link>
         </div>
         <button
           className="md:hidden inline-flex items-center justify-center rounded-md p-2 hover:bg-white/10"
