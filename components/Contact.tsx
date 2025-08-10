@@ -45,7 +45,7 @@ export function Contact() {
             <div>
               <h3 className="font-semibold text-lg mb-3">Get in Touch</h3>
               <p className="text-sm text-foreground/80">
-                Based in Caulfield East, VIC 3145. I'm always open to discussing new opportunities and exciting projects.
+                Based in Caulfield East, VIC 3145. I&apos;m always open to discussing new opportunities and exciting projects.
               </p>
             </div>
             <div>
