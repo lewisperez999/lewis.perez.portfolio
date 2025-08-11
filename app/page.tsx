@@ -11,9 +11,9 @@ export default function Home() {
       <Hero />
       <Skills />
       <Projects />
-  <Experience />
-  <Education />
-  {/* <Testimonials /> */}
+      <Experience />
+      <Education />
+      {/* <Testimonials /> */}
       <Contact />
     </div>
   );
