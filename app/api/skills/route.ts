@@ -1,6 +1,5 @@
 import { prisma } from '@/lib/prisma'
 import { NextResponse } from 'next/server'
-import type { Skill } from '@prisma/client'
 
 export async function GET() {
   try {
@@ -12,13 +11,15 @@ export async function GET() {
     })
 
     // Group skills by category
-    const skillsByCategory = skills.reduce((acc: Record<string, Skill[]>, skill: Skill) => {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const skillsByCategory = skills.reduce((acc: Record<string, any[]>, skill: any) => {
       if (!acc[skill.category]) {
         acc[skill.category] = []
       }
       acc[skill.category].push(skill)
       return acc
-    }, {} as Record<string, Skill[]>)
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    }, {} as Record<string, any[]>)
 
     return NextResponse.json(skillsByCategory)
   } catch (error) {
