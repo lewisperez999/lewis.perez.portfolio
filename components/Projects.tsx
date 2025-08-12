@@ -2,17 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useState, useEffect } from "react";
-
-interface Project {
-  id: string;
-  title: string;
-  description: string;
-  image: string;
-  liveUrl?: string;
-  githubUrl?: string;
-  technologies: string[];
-  featured: boolean;
-}
+import { Project } from "../types/portfolio";
 
 export function Projects() {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -111,7 +101,7 @@ export function Projects() {
         <div className="lg:hidden relative">
           <div className="overflow-hidden">
             <div className="flex transition-transform duration-500 ease-in-out" style={{ transform: `translateX(-${currentIndex * 100}%)` }}>
-              {projects.map((p, index) => (
+              {projects.map((p) => (
                 <div key={p.title} className="w-full flex-shrink-0 px-2">
                   <div className="group relative flex flex-col rounded-2xl border border-black dark:border-white/15 bg-gradient-to-br from-white/70 to-white/40 dark:from-white/10 dark:to-white/5 overflow-hidden backdrop-blur hover:border-blue-500/50 hover:shadow-xl hover:scale-105 transition-all duration-500">
                     <div className="aspect-[4/3] relative overflow-hidden bg-gradient-to-br from-blue-600/10 to-fuchsia-500/10 group-hover:from-blue-600/20 group-hover:to-fuchsia-500/20 transition-all duration-500">

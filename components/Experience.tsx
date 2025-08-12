@@ -1,5 +1,7 @@
+import { Experience as ExperienceType } from "../types/portfolio";
+
 export default async function Experience() {
-  let experiences: any[] = [];
+  let experiences: ExperienceType[] = [];
   
   try {
     // Fetch experience from API
@@ -22,7 +24,7 @@ export default async function Experience() {
   <div className="mx-auto max-w-6xl px-4 border border-black dark:border-white/25 rounded-3xl py-12 hover:border-blue-500/50 transition-all duration-700 hover:shadow-xl">
         <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-12 hover:text-blue-600 transition-colors duration-300">Experience</h2>
   <div className="space-y-8">
-          {experiences.map((job: any, idx: number) => (
+          {experiences.map((job: ExperienceType, idx: number) => (
             <div key={job.role + job.company} className="group flex gap-6 animate-fade-in-up hover:translate-x-2 transition-all duration-300" style={{animationDelay: `${idx * 150}ms`}}>
               {/* Timeline number and line */}
               <div className="flex flex-col items-center flex-shrink-0">
