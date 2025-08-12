@@ -1,53 +1,67 @@
 "use client";
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-type Project = {
+interface Project {
+  id: string;
   title: string;
   description: string;
-  image?: string; // path in public/
-  demo?: string;
-  repo?: string;
-};
-
-const projects: Project[] = [
-  {
-    title: "gintuanatbp.com",
-    description: "Delivered a complete Shopify e-commerce site with payment/shipping logic, theme customisation, and responsive UI using Liquid, HTML, CSS. Integrated secure third-party APIs and configured back-end workflows.",
-    image: "/gintuan-homepage.jpg", // Screenshot of the actual homepage
-    demo: "https://gintuanatbp.com"
-  },
-  {
-    title: "Enterprise API Orchestration (ING)",
-    description: "Built modular Java orchestration engine integrating multi-API workflows; improved throughput by 30%. Applied secure coding, validation, and logging standards.",
-    image: "/window.svg",
-    demo: "#",
-    repo: "#",
-  },
-  {
-    title: "ElasticSearch Migration Tool (IBM)",
-    description: "Developed multithreaded Java migration tool for 16M+ documents. Enhanced traceability and performance with custom validation and logging.",
-    image: "/file.svg",
-    demo: "#",
-    repo: "#",
-  },
-];
+  image: string;
+  liveUrl?: string;
+  githubUrl?: string;
+  technologies: string[];
+  featured: boolean;
+}
 
 export function Projects() {
+  const [projects, setProjects] = useState<Project[]>([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const response = await fetch('/api/projects');
+        if (response.ok) {
+          const data = await response.json();
+          setProjects(data);
+        }
+      } catch (error) {
+        console.error('Error fetching projects:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProjects();
+  }, []);
+
   const nextProject = () => {
     setCurrentIndex((prev) => (prev + 1) % projects.length);
   };
-  
+
   const prevProject = () => {
     setCurrentIndex((prev) => (prev - 1 + projects.length) % projects.length);
   };
-  
+
   const goToProject = (index: number) => {
     setCurrentIndex(index);
   };
+
+  if (loading) {
+    return (
+      <section id="projects" className="scroll-mt-24 py-[75px] lg:py-[107px] border-t border-black dark:border-white/10">
+        <div className="mx-auto max-w-6xl px-4 border border-black dark:border-white/25 rounded-3xl py-12">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-12 hover:text-blue-600 transition-colors duration-300">Projects</h2>
+          <div className="text-center py-12">
+            <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600 mx-auto"></div>
+            <p className="mt-4 text-gray-600 dark:text-gray-400">Loading projects...</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
   <section id="projects" className="scroll-mt-24 py-[75px] lg:py-[107px] border-t border-black dark:border-white/10">
@@ -77,13 +91,13 @@ export function Projects() {
                 <h3 className="font-semibold text-lg mb-2 group-hover:text-blue-600 transition-colors duration-300">{p.title}</h3>
                 <p className="text-sm text-foreground/70 flex-1 group-hover:text-foreground/90 transition-colors duration-300">{p.description}</p>
                 <div className="mt-4 flex gap-3">
-                  {p.demo && (
-                    <Link href={p.demo} className="text-xs font-medium px-4 py-2 rounded-full bg-blue-600 text-white hover:bg-blue-500 transition-all duration-300 hover:scale-105 hover:shadow-md">
+                  {p.liveUrl && (
+                    <Link href={p.liveUrl} className="text-xs font-medium px-4 py-2 rounded-full bg-blue-600 text-white hover:bg-blue-500 transition-all duration-300 hover:scale-105 hover:shadow-md">
                       Live Demo
                     </Link>
                   )}
-                  {p.repo && (
-                    <Link href={p.repo} className="text-xs font-medium px-4 py-2 rounded-full border border-blue-600 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-950 transition-all duration-300 hover:scale-105 hover:border-blue-400">
+                  {p.githubUrl && (
+                    <Link href={p.githubUrl} className="text-xs font-medium px-4 py-2 rounded-full border border-blue-600 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-950 transition-all duration-300 hover:scale-105 hover:border-blue-400">
                       GitHub
                     </Link>
                   )}
@@ -114,13 +128,13 @@ export function Projects() {
                       <h3 className="font-semibold text-lg mb-2 group-hover:text-blue-600 transition-colors duration-300">{p.title}</h3>
                       <p className="text-sm text-foreground/70 flex-1 group-hover:text-foreground/90 transition-colors duration-300">{p.description}</p>
                       <div className="mt-4 flex gap-3">
-                        {p.demo && (
-                          <Link href={p.demo} className="text-xs font-medium px-4 py-2 rounded-full bg-blue-600 text-white hover:bg-blue-500 transition-all duration-300 hover:scale-105 hover:shadow-md">
+                        {p.liveUrl && (
+                          <Link href={p.liveUrl} className="text-xs font-medium px-4 py-2 rounded-full bg-blue-600 text-white hover:bg-blue-500 transition-all duration-300 hover:scale-105 hover:shadow-md">
                             Live Demo
                           </Link>
                         )}
-                        {p.repo && (
-                          <Link href={p.repo} className="text-xs font-medium px-4 py-2 rounded-full border border-blue-600 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-950 transition-all duration-300 hover:scale-105 hover:border-blue-400">
+                        {p.githubUrl && (
+                          <Link href={p.githubUrl} className="text-xs font-medium px-4 py-2 rounded-full border border-blue-600 text-blue-600 hover:bg-blue-50 dark:hover:bg-blue-950 transition-all duration-300 hover:scale-105 hover:border-blue-400">
                             GitHub
                           </Link>
                         )}
