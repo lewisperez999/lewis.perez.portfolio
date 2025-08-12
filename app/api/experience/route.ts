@@ -5,7 +5,7 @@ export async function GET() {
   try {
     const experiences = await prisma.experience.findMany({
       orderBy: {
-        startDate: 'desc'
+        order: 'asc'
       }
     })
 
@@ -19,17 +19,15 @@ export async function GET() {
 export async function POST(request: Request) {
   try {
     const body = await request.json()
-    const { jobTitle, company, location, startDate, endDate, current, achievements } = body
+    const { role, company, period, achievements, order } = body
 
     const experience = await prisma.experience.create({
       data: {
-        jobTitle,
+        role,
         company,
-        location,
-        startDate,
-        endDate,
-        current: current || false,
-        achievements
+        period,
+        achievements,
+        order: order || 0
       }
     })
 

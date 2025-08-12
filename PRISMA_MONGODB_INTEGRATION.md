@@ -4,7 +4,28 @@ This document outlines the complete process of integrating Prisma ORM with Mongo
 
 ## Overview
 
-The goal was to transform a static portfolio site into a dynamic one where content can be managed through a database without requiring code changes and redeployment.
+The goal was to transform a static portfolio site into a dynamic one where content can be managed through a database without requiring ```env
+# MongoDB Connection String
+DATABASE_URL="mongodb+srv://username:password@cluster0.xxxxx.mongodb.net/portfolio?retryWrites=true&w=majority&appName=Cluster0"
+
+# Admin credentials
+ADMIN_EMAIL="admin@example.com"
+ADMIN_PASSWORD="your-secure-password"
+
+# NextAuth Secret
+NEXTAUTH_SECRET="your-super-secre```bash
+# Set environment variable and push schema
+$env:DATABASE_URL = "mongodb+srv://username:password@cluster.mongodb.net/portfolio?retryWrites=true&w=majority"
+
+# Push schema to MongoDB
+pnpm prisma db push
+
+# Seed the database  
+node prisma/seed.js
+
+# Start development server
+pnpm dev
+``````s and redeployment.
 
 ## Prerequisites
 
@@ -312,6 +333,13 @@ model BlogPosts {
 This demonstrates how MongoDB's flexible document structure makes it easy to add new features without complex migrations.
 
 ## Step 6: Setup Environment Variables
+
+**⚠️ Security Best Practices:**
+- Never commit `.env` files to version control
+- Use strong, unique passwords for database users
+- Regularly rotate database credentials
+- Use IP whitelisting when possible
+- Never include real credentials in documentation or code examples
 
 Created `.env.local` file with database connection:
 
