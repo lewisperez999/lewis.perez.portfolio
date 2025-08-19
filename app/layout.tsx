@@ -1,22 +1,24 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Orbitron, Rajdhani } from "next/font/google";
 import "./globals.css";
 import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const orbitron = Orbitron({
+  variable: "--font-orbitron",
   subsets: ["latin"],
+  weight: ["400", "700", "900"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const rajdhani = Rajdhani({
+  variable: "--font-rajdhani",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
 });
 
 export const metadata: Metadata = {
-  title: "Lewis Perez Online Portfolio",
-  description: "Showcasing the projects and skills of Lewis Perez",
+  title: "Lewis Perez - Mecha Engineer Portfolio",
+  description: "Neural Interface Engineer specializing in combat systems and enterprise solutions",
 };
 
 export default function RootLayout({
@@ -26,7 +28,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
+      <body className={`${orbitron.variable} ${rajdhani.variable} antialiased min-h-screen flex flex-col`}>
         <script
           dangerouslySetInnerHTML={{
             __html: `(() => { try { const s = localStorage.getItem('theme'); if(s){ document.documentElement.classList.toggle('dark', s==='dark'); } else { if(window.matchMedia('(prefers-color-scheme: dark)').matches){ document.documentElement.classList.add('dark'); } } } catch(_){} })();`

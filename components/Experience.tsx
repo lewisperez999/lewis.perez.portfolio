@@ -7,23 +7,23 @@ type ExperienceItem = {
 
 const experience: ExperienceItem[] = [
   {
+    role: "Freelance Full Stack Developer",
+    company: "Melbourne, VIC",
+    period: "Mar 2025 - Present",
+    achievements: [
+      "Delivered a Shopify e-commerce site, implementing payment/shipping logic, theme customisation, and responsive UI using Liquid, HTML, CSS. (gintuanatbp.com)",
+      "Integrated secure third-party APIs and configured back-end workflows.",
+      "Engaged directly with the client to gather requirements and deliver training documentation.",
+      "Provide on-going IT support.",
+    ],
+  },
+  {
     role: "Food Service Assistant",
     company: "Regis Aged Care Pty Ltd.",
     period: "Mar 2023 – Present",
     achievements: [
       "Applied compliance-driven processes in aged care operations, mirroring secure engineering discipline.",
       "Demonstrated precision, collaboration, and adaptability in high-stakes environments.",
-    ],
-  },
-  {
-    role: "Freelance Full Stack Developer",
-    company: "Melbourne, VIC",
-    period: "Mar 2025",
-    achievements: [
-      "Delivered a Shopify e-commerce site, implementing payment/shipping logic, theme customisation, and responsive UI using Liquid, HTML, CSS. (gintuanatbp.com)",
-      "Integrated secure third-party APIs and configured back-end workflows.",
-      "Engaged directly with the client to gather requirements and deliver training documentation.",
-      "Provide on-going IT support.",
     ],
   },
   {

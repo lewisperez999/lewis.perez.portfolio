@@ -40,16 +40,50 @@ const skillsData = {
 
 export default function Skills() {
   return (
-    <section id="skills" className="scroll-mt-24 py-[75px] lg:py-[107px] border-t border-black dark:border-white/10">
-      <div className="mx-auto max-w-6xl px-4 border border-black dark:border-white/25 rounded-3xl py-12 hover:border-blue-500/50 transition-all duration-700 hover:shadow-xl">
-        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-12 hover:text-blue-600 transition-colors duration-300">Technical Skills</h2>
+    <section id="skills" className="scroll-mt-24 py-[75px] lg:py-[107px] relative">
+      {/* Section Border Lines */}
+      <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-orange-accent to-transparent"></div>
+      
+      <div className="mx-auto max-w-6xl px-4 hud-border rounded-none py-12 corner-brackets animate-hud-pulse">
+        <div className="flex items-end justify-between gap-6 mb-12">
+          <h2 className="hud-heading text-3xl sm:text-4xl">Combat Systems</h2>
+          <div className="flex items-center gap-2 text-green-accent text-sm font-mono">
+            <span className="w-2 h-2 bg-green-accent rounded-full animate-pulse"></span>
+            <span>ALL SYSTEMS ARMED</span>
+          </div>
+        </div>
+        
+        {/* HUD Header Info */}
+        <div className="mb-8 p-4 hud-panel">
+          <div className="flex justify-between items-center text-sm font-mono">
+            <span className="blue-accent">SKILL MATRIX: LOADED</span>
+            <span className="orange-accent">PROFICIENCY: EXPERT</span>
+            <span className="green-accent">STATUS: READY</span>
+          </div>
+        </div>
+        
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-          {Object.entries(skillsData).map(([category, skills], index) => (
-            <div key={category} className="group p-6 rounded-2xl bg-gradient-to-br from-white/70 to-white/40 dark:from-white/10 dark:to-white/5 border border-black dark:border-white/15 backdrop-blur hover:border-blue-500/50 hover:shadow-lg hover:scale-105 transition-all duration-300 animate-fade-in-up" style={{animationDelay: `${index * 100}ms`}}>
-              <h3 className="font-semibold mb-4 tracking-wide text-sm uppercase text-blue-600 group-hover:text-blue-500 transition-colors duration-300">{category}</h3>
+          {Object.entries(skillsData).map(([category, skills], categoryIndex) => (
+            <div 
+              key={category} 
+              className="group relative hud-panel p-6 transition-all duration-300 animate-fade-in-up hover:scale-105" 
+              style={{animationDelay: `${categoryIndex * 100}ms`}}
+            >
+              {/* Category Header */}
+              <div className="mb-4">
+                <div className="text-xs font-mono blue-accent mb-1 uppercase tracking-wider">
+                  SYSTEM_{categoryIndex + 1}
+                </div>
+                <h3 className="font-bold text-sm uppercase orange-accent font-mono tracking-wider group-hover:text-orange-secondary transition-colors duration-300">
+                  {category}
+                </h3>
+                <div className="w-full h-px bg-gradient-to-r from-orange-accent to-transparent mt-2"></div>
+              </div>
+              
+              {/* Skills Grid */}
               <ul className="flex flex-wrap gap-2">
                 {skills.map((skill) => (
-                  <li key={skill.id} className="px-3 py-1 rounded-full bg-blue-600/10 text-blue-700 dark:text-blue-300 text-xs font-medium hover:bg-blue-600/20 hover:scale-105 transition-all duration-200 cursor-default">
+                  <li key={skill.id} className="tech-tag text-xs">
                     {skill.icon && (
                       <span className="mr-1">{skill.icon}</span>
                     )}
@@ -57,8 +91,28 @@ export default function Skills() {
                   </li>
                 ))}
               </ul>
+              
+              {/* Status Indicator */}
+              <div className="absolute top-2 right-2 flex items-center gap-1">
+                <div className="w-2 h-2 bg-green-accent rounded-full animate-pulse"></div>
+                <span className="text-xs font-mono green-accent">ONLINE</span>
+              </div>
+              
+              {/* Data Stream Effect */}
+              <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-accent to-transparent opacity-30 animate-pulse"></div>
+              </div>
             </div>
           ))}
+        </div>
+        
+        {/* Footer Status */}
+        <div className="mt-12 p-4 hud-panel">
+          <div className="flex justify-center items-center gap-4 text-xs font-mono">
+            <span className="blue-accent">◦ NEURAL INTERFACE STABLE ◦</span>
+            <span className="orange-accent">◦ COMBAT EFFECTIVENESS: MAXIMUM ◦</span>
+            <span className="green-accent">◦ ALL WEAPONS SYSTEMS: READY ◦</span>
+          </div>
         </div>
       </div>
     </section>
