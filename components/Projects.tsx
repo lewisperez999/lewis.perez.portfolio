@@ -46,18 +46,18 @@ export function Projects() {
       
       <div className="mx-auto max-w-6xl px-4 hud-border rounded-none py-12 corner-brackets animate-hud-pulse">
         <div className="flex items-end justify-between gap-6 mb-12">
-          <h2 className="hud-heading text-3xl sm:text-4xl">Projects Archive</h2>
+          <h2 className="hud-heading text-3xl sm:text-4xl">Project Archive</h2>
           <div className="flex items-center gap-2 text-green-accent text-sm font-mono">
             <span className="w-2 h-2 bg-green-accent rounded-full animate-pulse"></span>
-            <span>SYSTEMS ONLINE</span>
+            <span>PROJECTS ACTIVE</span>
           </div>
         </div>
         
         {/* HUD Header Info */}
         <div className="mb-8 p-4 hud-panel">
           <div className="flex justify-between items-center text-sm font-mono">
-            <span className="blue-accent">DEPLOYMENT STATUS: ACTIVE</span>
-            <span className="orange-accent">PROJECTS LOADED: {projectsData.length}</span>
+            <span className="blue-accent">DEPLOYMENT STATUS: LIVE</span>
+            <span className="orange-accent">PROJECTS COMPLETED: {projectsData.length}</span>
             <span className="green-accent">SYSTEM: OPERATIONAL</span>
           </div>
         </div>
@@ -77,7 +77,7 @@ export function Projects() {
               {/* Status Indicator */}
               <div className="absolute top-2 left-2 flex items-center gap-1">
                 <div className="w-2 h-2 bg-green-accent rounded-full animate-pulse"></div>
-                <span className="text-xs font-mono green-accent">ACTIVE</span>
+                <span className="text-xs font-mono green-accent">LIVE</span>
               </div>
               
               {/* Project Content */}
@@ -92,7 +92,7 @@ export function Projects() {
                 {/* Tech Stack */}
                 <div className="mb-6">
                   <div className="text-xs font-mono blue-accent mb-2 uppercase tracking-wider">
-                    TECH_STACK:
+                    TECHNOLOGIES:
                   </div>
                   <div className="flex flex-wrap gap-2">
                     {project.technologies.map((tech, techIndex) => (
@@ -115,7 +115,7 @@ export function Projects() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      DEPLOY
+                      VIEW LIVE
                     </a>
                   )}
                   {project.githubUrl && (
@@ -125,12 +125,12 @@ export function Projects() {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      SOURCE
+                      VIEW CODE
                     </a>
                   )}
                   {!project.liveUrl && !project.githubUrl && (
                     <div className="tech-button opacity-50 cursor-not-allowed">
-                      CLASSIFIED
+                      PRIVATE PROJECT
                     </div>
                   )}
                 </div>
@@ -148,9 +148,9 @@ export function Projects() {
         {/* Footer Status */}
         <div className="mt-12 p-4 hud-panel">
           <div className="flex justify-center items-center gap-4 text-xs font-mono">
-            <span className="blue-accent">◦ NEURAL LINK ESTABLISHED ◦</span>
-            <span className="orange-accent">◦ DATA INTEGRITY: 100% ◦</span>
-            <span className="green-accent">◦ UPTIME: 99.99% ◦</span>
+            <span className="blue-accent">◦ CODE REPOSITORY: ACCESSIBLE ◦</span>
+            <span className="orange-accent">◦ PROJECT STATUS: MAINTAINED ◦</span>
+            <span className="green-accent">◦ AVAILABLE FOR REVIEW ◦</span>
           </div>
         </div>
       </div>

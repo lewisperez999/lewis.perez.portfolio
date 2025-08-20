@@ -46,10 +46,10 @@ export default function Skills() {
       
       <div className="mx-auto max-w-6xl px-4 hud-border rounded-none py-12 corner-brackets animate-hud-pulse">
         <div className="flex items-end justify-between gap-6 mb-12">
-          <h2 className="hud-heading text-3xl sm:text-4xl">Combat Systems</h2>
+          <h2 className="hud-heading text-3xl sm:text-4xl">Technical Skills</h2>
           <div className="flex items-center gap-2 text-green-accent text-sm font-mono">
             <span className="w-2 h-2 bg-green-accent rounded-full animate-pulse"></span>
-            <span>ALL SYSTEMS ARMED</span>
+            <span>SKILLS VERIFIED</span>
           </div>
         </div>
         
@@ -72,7 +72,7 @@ export default function Skills() {
               {/* Category Header */}
               <div className="mb-4">
                 <div className="text-xs font-mono blue-accent mb-1 uppercase tracking-wider">
-                  SYSTEM_{categoryIndex + 1}
+                  CATEGORY_{categoryIndex + 1}
                 </div>
                 <h3 className="font-bold text-sm uppercase orange-accent font-mono tracking-wider group-hover:text-orange-secondary transition-colors duration-300">
                   {category}
@@ -95,7 +95,7 @@ export default function Skills() {
               {/* Status Indicator */}
               <div className="absolute top-2 right-2 flex items-center gap-1">
                 <div className="w-2 h-2 bg-green-accent rounded-full animate-pulse"></div>
-                <span className="text-xs font-mono green-accent">ONLINE</span>
+                <span className="text-xs font-mono green-accent">ACTIVE</span>
               </div>
               
               {/* Data Stream Effect */}
@@ -109,9 +109,9 @@ export default function Skills() {
         {/* Footer Status */}
         <div className="mt-12 p-4 hud-panel">
           <div className="flex justify-center items-center gap-4 text-xs font-mono">
-            <span className="blue-accent">◦ NEURAL INTERFACE STABLE ◦</span>
-            <span className="orange-accent">◦ COMBAT EFFECTIVENESS: MAXIMUM ◦</span>
-            <span className="green-accent">◦ ALL WEAPONS SYSTEMS: READY ◦</span>
+            <span className="blue-accent">◦ TECHNICAL STACK: OPTIMIZED ◦</span>
+            <span className="orange-accent">◦ PERFORMANCE: MAXIMUM ◦</span>
+            <span className="green-accent">◦ ALL SYSTEMS: OPERATIONAL ◦</span>
           </div>
         </div>
       </div>

@@ -19,60 +19,154 @@ export function Contact() {
     form.reset();
   }
   return (
-  <section id="contact" className="scroll-mt-24 py-[75px] lg:py-[107px] border-t border-black dark:border-white/10">
-  <div className="mx-auto max-w-6xl px-4 border border-black dark:border-white/25 rounded-3xl py-12 hover:border-blue-500/50 transition-all duration-700 hover:shadow-xl">
-        <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-12 hover:text-blue-600 transition-colors duration-300">Contact</h2>
-        <div className="grid gap-12 lg:grid-cols-3">
-          <form onSubmit={handleSubmit} className="space-y-6 lg:col-span-2 animate-fade-in-up">
-            <div className="group">
-              <label htmlFor="name" className="block text-sm font-medium mb-1 group-hover:text-blue-600 transition-colors duration-300">Name</label>
-              <input id="name" name="name" required className="w-full rounded-md border border-black dark:border-white/15 bg-white/70 dark:bg-white/10 backdrop-blur px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 hover:border-blue-500/50 transition-all duration-300" />
+  <section id="contact" className="scroll-mt-24 py-[75px] lg:py-[107px] relative">
+    {/* Section Border Lines */}
+    <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-blue-accent to-transparent"></div>
+    
+    <div className="mx-auto max-w-6xl px-4 hud-border rounded-none py-12 corner-brackets animate-hud-pulse">
+      <div className="flex items-end justify-between gap-6 mb-12">
+        <h2 className="hud-heading text-3xl sm:text-4xl">Get In Touch</h2>
+        <div className="flex items-center gap-2 text-green-accent text-sm font-mono">
+          <span className="w-2 h-2 bg-green-accent rounded-full animate-pulse"></span>
+          <span>AVAILABLE FOR CONTACT</span>
+        </div>
+      </div>
+      
+      {/* HUD Header Info */}
+      <div className="mb-8 p-4 hud-panel">
+        <div className="flex justify-between items-center text-sm font-mono">
+          <span className="blue-accent">COMMUNICATION: SECURE</span>
+          <span className="orange-accent">LOCATION: CAULFIELD EAST, VIC</span>
+          <span className="green-accent">STATUS: READY TO CONNECT</span>
+        </div>
+      </div>
+      
+      <div className="grid gap-12 lg:grid-cols-3">
+        <form onSubmit={handleSubmit} className="space-y-6 lg:col-span-2 animate-fade-in-up">
+          <div className="group relative hud-panel p-4">
+            <label htmlFor="name" className="block text-xs font-mono blue-accent mb-2 uppercase tracking-wider">NAME:</label>
+            <input 
+              id="name" 
+              name="name" 
+              required 
+              className="w-full bg-transparent border-b-2 border-blue-accent/30 focus:border-blue-accent text-gray-300 px-2 py-2 text-sm font-mono focus:outline-none transition-all duration-300" 
+              placeholder="Enter your name..."
+            />
+          </div>
+          
+          <div className="group relative hud-panel p-4">
+            <label htmlFor="email" className="block text-xs font-mono blue-accent mb-2 uppercase tracking-wider">EMAIL:</label>
+            <input 
+              id="email" 
+              name="email" 
+              type="email" 
+              required 
+              className="w-full bg-transparent border-b-2 border-blue-accent/30 focus:border-blue-accent text-gray-300 px-2 py-2 text-sm font-mono focus:outline-none transition-all duration-300" 
+              placeholder="Enter your email..."
+            />
+          </div>
+          
+          <div className="group relative hud-panel p-4">
+            <label htmlFor="message" className="block text-xs font-mono blue-accent mb-2 uppercase tracking-wider">MESSAGE:</label>
+            <textarea 
+              id="message" 
+              name="message" 
+              rows={5} 
+              required 
+              className="w-full bg-transparent border-b-2 border-blue-accent/30 focus:border-blue-accent text-gray-300 px-2 py-2 text-sm font-mono resize-y focus:outline-none transition-all duration-300" 
+              placeholder="Enter your message..."
+            />
+          </div>
+          
+          <button type="submit" className="tech-button">
+            SEND MESSAGE
+          </button>
+          
+          {status && (
+            <div className="p-3 hud-panel">
+              <p className="text-xs font-mono green-accent">{status}</p>
             </div>
-            <div className="group">
-              <label htmlFor="email" className="block text-sm font-medium mb-1 group-hover:text-blue-600 transition-colors duration-300">Email</label>
-              <input id="email" name="email" type="email" required className="w-full rounded-md border border-black dark:border-white/15 bg-white/70 dark:bg-white/10 backdrop-blur px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400 hover:border-blue-500/50 transition-all duration-300" />
+          )}
+        </form>
+        
+        <div className="space-y-6 lg:pl-8 animate-fade-in-up animation-delay-200">
+          <div className="group relative hud-panel p-6">
+            <div className="absolute top-2 right-2 text-xs font-mono orange-accent">
+              INFO_001
             </div>
-            <div className="group">
-              <label htmlFor="message" className="block text-sm font-medium mb-1 group-hover:text-blue-600 transition-colors duration-300">Message</label>
-              <textarea id="message" name="message" rows={5} required className="w-full rounded-md border border-black dark:border-white/15 bg-white/70 dark:bg-white/10 backdrop-blur px-3 py-2 text-sm resize-y focus:outline-none focus:ring-2 focus:ring-blue-400 hover:border-blue-500/50 transition-all duration-300" />
+            <div className="absolute top-2 left-2 flex items-center gap-1">
+              <div className="w-2 h-2 bg-green-accent rounded-full animate-pulse"></div>
+              <span className="text-xs font-mono green-accent">ACTIVE</span>
             </div>
-            <button type="submit" className="inline-flex items-center rounded-full bg-blue-600 text-white px-8 py-3 text-sm font-medium shadow hover:bg-blue-500 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 transition-all duration-300 hover:scale-105 hover:shadow-lg">
-              Send Message
-            </button>
-            {status && <p className="text-xs text-foreground/60">{status}</p>}
-          </form>
-          <div className="space-y-8 lg:pl-8 animate-fade-in-up animation-delay-200">
-            <div className="group">
-              <h3 className="font-semibold text-lg mb-3 group-hover:text-blue-600 transition-colors duration-300">Get in Touch</h3>
-              <p className="text-sm text-foreground/80 group-hover:text-foreground transition-colors duration-300">
+            <div className="mt-6">
+              <h3 className="font-bold text-lg mb-3 orange-accent font-mono uppercase tracking-wider">About Me</h3>
+              <p className="text-gray-300 text-sm">
                 Based in Caulfield East, VIC 3145. I&apos;m always open to discussing new opportunities and exciting projects.
               </p>
             </div>
-            <div className="group">
-              <h3 className="font-semibold text-lg mb-3 group-hover:text-blue-600 transition-colors duration-300">Direct Contact</h3>
+          </div>
+          
+          <div className="group relative hud-panel p-6">
+            <div className="absolute top-2 right-2 text-xs font-mono orange-accent">
+              CONTACT_002
+            </div>
+            <div className="absolute top-2 left-2 flex items-center gap-1">
+              <div className="w-2 h-2 bg-green-accent rounded-full animate-pulse"></div>
+              <span className="text-xs font-mono green-accent">ONLINE</span>
+            </div>
+            <div className="mt-6">
+              <h3 className="font-bold text-lg mb-3 orange-accent font-mono uppercase tracking-wider">Direct Contact</h3>
               <div className="space-y-2 text-sm">
                 <p>
-                  <a href="mailto:lewisperez12152017@gmail.com" className="text-blue-600 hover:underline hover:text-blue-500 transition-all duration-300 hover:translate-x-1 inline-block">
+                  <a href="mailto:lewisperez12152017@gmail.com" className="text-blue-accent hover:text-blue-secondary transition-all duration-300 font-mono">
                     lewisperez12152017@gmail.com
                   </a>
                 </p>
                 <p>
-                  <a href="tel:0497072972" className="text-blue-600 hover:underline hover:text-blue-500 transition-all duration-300 hover:translate-x-1 inline-block">
+                  <a href="tel:0497072972" className="text-blue-accent hover:text-blue-secondary transition-all duration-300 font-mono">
                     0497 072 972
                   </a>
                 </p>
               </div>
             </div>
-            <div className="group">
-              <h3 className="font-semibold text-lg mb-3 group-hover:text-blue-600 transition-colors duration-300">Connect Online</h3>
+          </div>
+          
+          <div className="group relative hud-panel p-6">
+            <div className="absolute top-2 right-2 text-xs font-mono orange-accent">
+              SOCIAL_003
+            </div>
+            <div className="absolute top-2 left-2 flex items-center gap-1">
+              <div className="w-2 h-2 bg-green-accent rounded-full animate-pulse"></div>
+              <span className="text-xs font-mono green-accent">LINKED</span>
+            </div>
+            <div className="mt-6">
+              <h3 className="font-bold text-lg mb-3 orange-accent font-mono uppercase tracking-wider">Professional Links</h3>
               <ul className="space-y-2 text-sm">
-                <li><a href="https://linkedin.com/in/lewis-perez" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline hover:text-blue-500 transition-all duration-300 hover:translate-x-1 inline-block">LinkedIn Profile</a></li>
-                <li><a href="https://github.com/lewisperez999" target="_blank" rel="noopener noreferrer" className="text-blue-600 hover:underline hover:text-blue-500 transition-all duration-300 hover:translate-x-1 inline-block">GitHub Projects</a></li>
+                <li>
+                  <a href="https://linkedin.com/in/lewis-perez" target="_blank" rel="noopener noreferrer" className="text-blue-accent hover:text-blue-secondary transition-all duration-300 font-mono">
+                    LinkedIn Profile
+                  </a>
+                </li>
+                <li>
+                  <a href="https://github.com/lewisperez999" target="_blank" rel="noopener noreferrer" className="text-blue-accent hover:text-blue-secondary transition-all duration-300 font-mono">
+                    GitHub Projects
+                  </a>
+                </li>
               </ul>
             </div>
           </div>
         </div>
       </div>
-    </section>
+      
+      {/* Footer Status */}
+      <div className="mt-12 p-4 hud-panel">
+        <div className="flex justify-center items-center gap-4 text-xs font-mono">
+          <span className="blue-accent">◦ COMMUNICATION CHANNELS OPEN ◦</span>
+          <span className="orange-accent">◦ RESPONSE TIME: 24 HOURS ◦</span>
+          <span className="green-accent">◦ READY FOR COLLABORATION ◦</span>
+        </div>
+      </div>
+    </div>
+  </section>
   );
 }

@@ -1,90 +1,98 @@
+"use client";
+
 export function Hero() {
+  const scrollToSection = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
-    <section id="home" className="relative overflow-hidden pt-[91px] pb-[91px] lg:pt-[123px] lg:pb-[123px]">
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden">
       {/* Background Effects */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-10 left-10 w-64 h-64 bg-blue-accent opacity-10 blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-10 right-10 w-64 h-64 bg-orange-accent opacity-10 blur-3xl animate-pulse" style={{animationDelay: '2s'}}></div>
-      </div>
-      
-      <div className="mx-auto max-w-6xl px-4 py-24 lg:py-32 relative hud-border rounded-none corner-brackets animate-hud-pulse">
-        {/* HUD Header */}
-        <div className="absolute top-4 right-4 text-xs font-mono green-accent">
-          PILOT_ID: LP_001 | STATUS: ACTIVE
-        </div>
-        
-        {/* Main Content */}
-        <div className="relative z-10">
-          {/* Rank/Title */}
-          <div className="flex items-center gap-3 mb-6 animate-fade-in-up">
-            <div className="w-8 h-0.5 bg-orange-accent"></div>
-            <p className="text-sm font-mono uppercase tracking-widest orange-accent">
-              SENIOR MECHA ENGINEER
-            </p>
-            <div className="w-8 h-0.5 bg-orange-accent"></div>
-          </div>
-          
-          {/* Pilot Name */}
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-tight max-w-4xl animate-fade-in-up font-mono uppercase" style={{animationDelay: '200ms'}}>
-            <span className="blue-accent">Lewis</span>{' '}
-            <span className="orange-accent">Perez</span>
-            <div className="text-xl mt-2 text-gray-300 normal-case font-normal">
-              Neural Interface Engineer
-            </div>
-          </h1>
-          
-          {/* Description */}
-          <div className="mt-8 hud-panel p-6 animate-fade-in-up" style={{animationDelay: '400ms'}}>
-            <div className="text-xs font-mono blue-accent mb-2 uppercase tracking-wider">
-              PILOT_PROFILE.LOG:
-            </div>
-            <p className="text-base text-gray-300 leading-relaxed">
-              Senior Software Engineer with 8+ years combat experience across healthcare, banking, and telecom battlefields. 
-              Specialized in Java weaponry, Python targeting systems, PostgreSQL data matrices, and AWS deployment platforms. 
-              Proven success deploying secure, scalable microservices and RESTful API arsenal.
-            </p>
-          </div>
-          
-          {/* Action Buttons */}
-          <div className="mt-10 flex flex-col sm:flex-row gap-4 animate-fade-in-up" style={{animationDelay: '600ms'}}>
-            <a href="#projects" className="tech-button text-center">
-              ACCESS MISSION ARCHIVE
-            </a>
-            <a href="#contact" className="tech-button text-center">
-              ESTABLISH COMM LINK
-            </a>
-          </div>
-          
-          {/* Stats Display */}
-          <div className="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-6 animate-fade-in-up" style={{animationDelay: '800ms'}}>
-            <div className="hud-panel p-4 text-center">
-              <div className="text-lg font-mono orange-accent">8+</div>
-              <div className="text-xs font-mono blue-accent uppercase">Combat Years</div>
-            </div>
-            <div className="hud-panel p-4 text-center">
-              <div className="text-lg font-mono orange-accent">∞</div>
-              <div className="text-xs font-mono blue-accent uppercase">APIs Deployed</div>
-            </div>
-            <div className="hud-panel p-4 text-center">
-              <div className="text-lg font-mono orange-accent">MAX</div>
-              <div className="text-xs font-mono blue-accent uppercase">Performance</div>
-            </div>
-            <div className="hud-panel p-4 text-center">
-              <div className="text-lg font-mono orange-accent">ELITE</div>
-              <div className="text-xs font-mono blue-accent uppercase">Security Lvl</div>
-            </div>
+      <div className="absolute inset-0 grid-fade opacity-50" />
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-accent/20 rounded-full blur-3xl animate-pulse-glow" />
+      <div className="absolute bottom-1/3 right-1/4 w-64 h-64 bg-orange-accent/20 rounded-full blur-3xl animate-pulse-glow" style={{ animationDelay: "1s" }} />
+
+      <div className="container mx-auto px-6 text-center relative z-10">
+        {/* Status Banner */}
+        <div className="hud-panel inline-block px-4 py-2 mb-8 animate-fade-in">
+          <div className="flex items-center space-x-2 text-sm">
+            <div className="w-2 h-2 bg-green-accent rounded-full animate-pulse" />
+            <span className="text-green-accent font-mono">PILOT_ID: LP_001 | STATUS: ACTIVE</span>
           </div>
         </div>
-        
-        {/* System Status Footer */}
-        <div className="absolute bottom-4 left-4 right-4">
-          <div className="hud-panel p-3">
-            <div className="flex justify-between items-center text-xs font-mono">
-              <span className="green-accent">◦ NEURAL LINK: STABLE ◦</span>
-              <span className="blue-accent">◦ SYSTEMS: ALL GREEN ◦</span>
-              <span className="orange-accent">◦ READY FOR DEPLOYMENT ◦</span>
-            </div>
+
+        {/* Role */}
+        <div className="mb-4 animate-fade-in" style={{ animationDelay: "0.2s" }}>
+          <span className="orange-accent font-mono text-sm uppercase tracking-wider">
+            SENIOR SOFTWARE ENGINEER
+          </span>
+        </div>
+
+        {/* Name */}
+        <h1 className="text-6xl md:text-8xl font-bold mb-4 animate-fade-in font-mono uppercase" style={{ animationDelay: "0.4s" }}>
+          <span className="blue-accent">LEWIS</span>{" "}
+          <span className="orange-accent">PEREZ</span>
+        </h1>
+
+        {/* Title */}
+        <h2 className="text-xl md:text-2xl mb-8 text-gray-300 animate-fade-in" style={{ animationDelay: "0.6s" }}>
+          Full Stack Developer & Cloud Architect
+        </h2>
+
+        {/* Profile Section */}
+        <div className="hud-panel p-6 mb-8 max-w-4xl mx-auto animate-fade-in-up" style={{ animationDelay: "0.8s" }}>
+          <div className="text-left">
+            <div className="text-blue-accent font-mono text-sm mb-3">ENGINEER_PROFILE.LOG:</div>
+            <p className="text-gray-300 leading-relaxed">
+              Experienced Software Engineer with 8+ years of expertise in enterprise applications across healthcare, banking, and telecommunications sectors. 
+              Specialized in Java enterprise development, cloud infrastructure, microservices architecture, and scalable API design. 
+              Proven track record of delivering high-performance solutions and leading technical initiatives.
+            </p>
           </div>
+        </div>
+
+        {/* Action Buttons */}
+        <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-12 animate-fade-in-up" style={{ animationDelay: "1s" }}>
+          <button 
+            onClick={() => scrollToSection("projects")}
+            className="tech-button group"
+          >
+            <span className="mr-2">👁️</span>
+            ACCESS PROJECT ARCHIVE
+          </button>
+          <button 
+            onClick={() => scrollToSection("contact")}
+            className="tech-button group"
+          >
+            <span className="mr-2">⚡</span>
+            ESTABLISH COMM LINK
+          </button>
+        </div>
+
+        {/* Stats Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12 animate-fade-in-up" style={{ animationDelay: "1.2s" }}>
+          <div className="hud-panel p-4 text-center">
+            <div className="text-2xl font-bold orange-accent font-mono">8+</div>
+            <div className="text-xs blue-accent font-mono uppercase">Years Experience</div>
+          </div>
+          <div className="hud-panel p-4 text-center">
+            <div className="text-2xl font-bold orange-accent font-mono">100%</div>
+            <div className="text-xs blue-accent font-mono uppercase">Success Rate</div>
+          </div>
+          <div className="hud-panel p-4 text-center">
+            <div className="text-2xl font-bold green-accent font-mono">EXPERT</div>
+            <div className="text-xs blue-accent font-mono uppercase">Skill Level</div>
+          </div>
+        </div>
+
+        {/* Status Line */}
+        <div className="text-center green-accent font-mono text-sm animate-fade-in-up" style={{ animationDelay: "1.4s" }}>
+          ◦ SYSTEM STATUS: OPERATIONAL ◦◦ READY FOR COLLABORATION ◦◦ AVAILABLE FOR HIRE ◦
+        </div>
+
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+          <div className="h-6 w-6 text-gray-400">↓</div>
         </div>
       </div>
     </section>
