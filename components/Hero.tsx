@@ -36,7 +36,7 @@ export function Hero() {
 
         {/* Title */}
         <h2 className="text-xl md:text-2xl mb-8 text-gray-300 animate-fade-in" style={{ animationDelay: "0.6s" }}>
-          Full Stack Developer & Cloud Architect
+          Full Stack Developer | API Specialist
         </h2>
 
         {/* Profile Section */}
